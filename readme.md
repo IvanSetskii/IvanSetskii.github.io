@@ -10,7 +10,8 @@
 ### Как открыть/запустить
 
 * Перейти по [ссылке](https://ivansetskii.github.io)
+  или
 * Зайти в папку сайта в файловом менеджере, кликнуть 2 раза по файлу index.html.
 
 ### Лицензия
-LICENSE: [Apache v2.0](LICENSE.md) 
+LICENSE: [Apache v2.0](LICENSE.md)

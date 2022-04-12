@@ -79,3 +79,11 @@ article img {
     height: 300px;
     object-fit: cover;
 }
+
+article:nth-child(even) {
+    background: khaki;
+}
+
+article:nth-child(-n+2) .preview:before {
+    content: "NEW! ";
+}
