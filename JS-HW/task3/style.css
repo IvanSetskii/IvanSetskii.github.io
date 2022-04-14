@@ -1,0 +1,18 @@
+#trafficLight {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: black;
+}
+#trafficLightTwo {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: black;
+}
+#trafficLightThree {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: black;
+}

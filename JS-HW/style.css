@@ -1,0 +1,14 @@
+h1 {
+    color: steelblue;
+    font-size: 20px;
+    font-family: "Monaco", monospace;
+}
+li a {
+    color: darkgray;
+    text-decoration: none;
+    font-family: "Monaco", monospace;
+}
+li a:hover {
+    color: steelblue;
+}
+
