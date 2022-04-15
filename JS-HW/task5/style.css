@@ -1,0 +1,14 @@
+lable {
+    color: steelblue;
+    font-size: 20px;
+    font-family: "Monaco", monospace;
+}
+p {
+    color: black;
+    text-decoration: none;
+    font-family: "Monaco", monospace;
+}
+a:hover {
+    color: steelblue;
+}
+

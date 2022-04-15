@@ -1,10 +1,7 @@
-const  textContent = document.querySelector('#textContent');
-function textFunction() {
-    textContent.addEventListener()
-
-
+const a = document.querySelector('#defaultContent');
+a.addEventListener("click", preventDefault);
+function preventDefault () {
+    const userContent = prompt('Введите текст');
+    const defaultContent = document.querySelector('#defaultContent');
+    defaultContent.textContent = userContent;
 }
-    (event) => {
-        this.preventDefault();
-        prompt('Вы кликнули по ссылке и ничего не произошло');
-    })

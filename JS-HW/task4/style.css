@@ -1,0 +1,9 @@
+body a {
+    color: black;
+    text-decoration: none;
+    font-family: "Monaco", monospace;
+}
+body a:hover {
+    color: steelblue;
+}
+
