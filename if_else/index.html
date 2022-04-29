@@ -12,15 +12,32 @@
     <div class="row game-card align-items-center">
         <div class="col col-md-4 offset-md-4">
             <div class="card text-center">
-                <div class="card-header">
+                <h4 class="card-title m-0">Укажи диапазон чисел для игры</h4>
+                <div>
+                    От: <input type="number" placeholder="1" id="minVal"> До: <input type="number" placeholder="100" id="maxVal">
+                    <div>
+                        <h4 class="card-title m-0">а я его угадаю</h4>
+                    </div>
+                    <div class="card-body">
+                        <div>
+                        <button class="btn btn-success btn-lg" id="btnPlay"> Играть! </button>
+                    </div>
+                        </div>
+                    <div>
+                        <div>
+                            <h3 class="card-title m-0" id="answerCheck"> Ок<h3>
+                        </div>
+                    </div>
+                 <div class="card-header">
                     <p class="m-0">Вопрос №<span id="orderNumberField"> </span></p>
-                </div>
-                <div class="card-body">
+                 </div>
+                 <div class="card-body">
                     <div class="row no-gutters">
                         <div class="col">
                             <h3 class="card-title m-0"><span id="answerField">Вы загадали число ?</span></h3>
                         </div>
                     </div>
+                </div>
                 </div>
                 <div class="card-body">
                     <div class="btn-group">
