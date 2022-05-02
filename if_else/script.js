@@ -137,19 +137,21 @@ document.getElementById('btnLess').addEventListener('click', function () {
             let dAnswer = orderNumPropis.toString().length;
             console.log(orderNumPropis.toString().length);
             if (dAnswer < 20) {
-                answerField.innerText = `Дайте подумать, это  ${orderNumPropis}?`;
                 console.log(answerNumber);
+                phraseRandom = Math.round( Math.random()*3);
+            if (phraseRandom === 1) {answerField.innerText = `Вы загадали число ${orderNumPropis }?`;
+        }     else if (phraseRandom === 2) {answerField.innerText = `А может быть это ${orderNumPropis }?`;
+            }   else {answerField.innerText = `Дайте подумать, это ${orderNumPropis }?`;
+           }
             }
             else {
-                answerField.innerText = `Вы загадали число ${answerNumber }?`;
+                phraseRandom = Math.round( Math.random()*3);
+                if (phraseRandom === 1) {answerField.innerText = `Вы загадали число ${answerNumber }?`;
+                }     else if (phraseRandom === 2) {answerField.innerText = `А может быть это ${answerNumber }?`;
+                }   else {answerField.innerText = `Дайте подумать, это ${answerNumber }?`;
+                }
             }
         }
-//            phraseRandom = Math.round( Math.random()*3);
-//            if (phraseRandom === 1) {answerField.innerText = `Вы загадали число ${answerNumber }?`;
-//        }     else if (phraseRandom === 2) {answerField.innerText = `А может быть это ${answerNumber }?`;
-//            }   else {answerField.innerText = `Дайте подумать, это ${answerNumber }?`;
-//           }
-//        }
     }
 })
 
@@ -208,20 +210,19 @@ document.getElementById('btnOver').addEventListener('click', function () {
             let dAnswer = orderNumPropis.toString().length;
             console.log(orderNumPropis.toString().length);
             if (dAnswer < 20) {
-                answerField.innerText = `Дайте подумать, это  ${orderNumPropis}?`;
-                console.log(answerNumber);
+                phraseRandom = Math.round( Math.random()*3);
+                if (phraseRandom === 1) {answerField.innerText = `Вы загадали число ${orderNumPropis }?`;
+                }     else if (phraseRandom === 2) {answerField.innerText = `А может быть это ${orderNumPropis }?`;
+                }   else {answerField.innerText = `Дайте подумать, это ${orderNumPropis }?`;
+                }
             }
             else {
-                answerField.innerText = `Вы загадали число ${answerNumber }?`;
-            }
-        }
-//            phraseRandom = Math.round( Math.random()*3);
-//            if (phraseRandom === 1) {answerField.innerText = `Вы загадали число ${answerNumber }?`;
-//            }     else if (phraseRandom === 2) {answerField.innerText = `А может быть это ${answerNumber }?`;
-//            }   else {answerField.innerText = `Дайте подумать, это ${answerNumber }?`;
-//            }
-//        }
-    }})
+                phraseRandom = Math.round( Math.random()*3);
+                if (phraseRandom === 1) {answerField.innerText = `Вы загадали число ${answerNumber }?`;
+                }     else if (phraseRandom === 2) {answerField.innerText = `А может быть это ${answerNumber }?`;
+                }   else {answerField.innerText = `Дайте подумать, это ${answerNumber }?`;
+                }
+    }}}})
 
 document.getElementById('btnEqual').addEventListener('click', function () {
     if (gameRun){
