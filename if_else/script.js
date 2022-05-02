@@ -18,9 +18,9 @@ var e = "";
 var n = "";
 document.getElementById('btnPlay').addEventListener('click', function () {
     minValue = document.getElementById("minVal").value || 1;
-    (minValue < -999) ? minValue = -999 : console.log('Минимальное значение Ok');
+    (minValue < -999) ? minValue = -999 : console.log('Минимальное значение не менее -999');
     maxValue = document.getElementById("maxVal").value || 100;
-    (maxValue > 999) ? maxValue = 999 : console.log('Максимальное значение Ok');
+    (maxValue > 999) ? maxValue = 999 : console.log('Максимальное значение не более 999');
     answerCheck.innerText = `Отгадываю между ${minValue} и ${maxValue}`;
     if (minValue < maxValue) {
         answerNumber = Math.floor(((minValue * 1) + (maxValue * 1)) / 2);
