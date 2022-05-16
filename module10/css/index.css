@@ -111,6 +111,10 @@ main {
   background: #8b00ff;
 }
 
+.fruit_black {
+  background: black;
+}
+
 .fruit_green {
   background: #84cd1b;
 }

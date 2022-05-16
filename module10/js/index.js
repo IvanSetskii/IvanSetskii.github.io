@@ -10,6 +10,7 @@ const kindInput = document.querySelector('.kind__input'); // поле с наз�
 const colorInput = document.querySelector('.color__input'); // поле с названием цвета
 const weightInput = document.querySelector('.weight__input'); // поле с весом
 const addActionButton = document.querySelector('.add__action__btn'); // кнопка добавления
+const fruitInfo = document.querySelectorAll('.fruit__info'); // список в карточке
 
 // список фруктов в JSON формате
 let fruitsJSON = `[
@@ -23,16 +24,55 @@ let fruitsJSON = `[
 // преобразование JSON в объект JavaScript
 let fruits = JSON.parse(fruitsJSON);
 
+// console.log для самоконтроля
+const samCntrl = () => {
+  for (let i = 0; i < fruits.length; i++) {
+    console.log(fruits[i]);
+  }
+};
 /*** ОТОБРАЖЕНИЕ ***/
-
 // отрисовка карточек
 const display = () => {
-  // TODO: очищаем fruitsList от вложенных элементов,
-  // чтобы заполнить актуальными данными из fruits
-
+  // очищаем fruitsList от вложенных элементов
+  fruitsList.textContent = '';
+  //задаем цикл родительства и дочерних элементов
   for (let i = 0; i < fruits.length; i++) {
-    // TODO: формируем новый элемент <li> при помощи document.createElement,
-    // и добавляем в конец списка fruitsList при помощи document.appendChild
+    let parent = document.querySelector('.fruits__list'); // родитель ul
+    parent.className = "fruits__list";
+    let li = document.createElement('li'); // ребенок li
+    li.className = "fruit__item";
+    parent.appendChild(li);
+    let div = document.createElement('div'); // ребенок div
+    div.className = "fruit__info";
+    li.appendChild(div);
+    let div2 = document.createElement('div'); // div2 ребенок div'a
+    let div3 = document.createElement('div'); // div3 ребенок div'a
+    let div4 = document.createElement('div'); // div4 ребенок div'a
+    let div5 = document.createElement('div'); // div5 ребенок div'a
+    div.appendChild(div2);
+    div.appendChild(div3);
+    div.appendChild(div4);
+    div.appendChild(div5);
+    // формирование контента в дочерних элементах
+    div2.innerHTML = 'index: ' + i;
+    div3.innerHTML = 'kind: ' + fruits[i]['kind'];
+    div4.innerHTML = 'color: ' + fruits[i]['color'];
+    div5.innerHTML = 'weight: ' + fruits[i]['weight'];
+
+    //цвета для рамки
+    if (fruits[i]['color'] == "фиолетовый") {
+      li.className += " fruit_violet";
+    } else if (fruits[i]['color'] == "зеленый"){
+      li.className = " fruit_green";
+    } else if (fruits[i]['color'] == "розово-красный"){
+      li.className = " fruit_carmazin";
+    } else if (fruits[i]['color'] == "желтый"){
+      li.className = " fruit_yellow";
+    } else if (fruits[i]['color'] == "светло-коричневый"){
+      li.className = " fruit_lightbrown";
+    } else {
+      li.className = " fruit_black";
+    }
   }
 };
 
@@ -42,30 +82,31 @@ display();
 /*** ПЕРЕМЕШИВАНИЕ ***/
 
 // генерация случайного числа в заданном диапазоне
-const getRandomInt = (min, max) => {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
+const getRandomInt = (max) => {
+  return Math.floor(Math.random() * max);
 };
 
 // перемешивание массива
 const shuffleFruits = () => {
-  let result = [];
-
+ let result = [];
   // ATTENTION: сейчас при клике вы запустите бесконечный цикл и браузер зависнет
-  while (fruits.length > 0) {
-    // TODO: допишите функцию перемешивания массива
-    //
-    // Подсказка: находим случайный элемент из fruits, используя getRandomInt
-    // вырезаем его из fruits и вставляем в result.
-    // ex.: [1, 2, 3], [] => [1, 3], [2] => [3], [2, 1] => [], [2, 1, 3]
-    // (массив fruits будет уменьшатся, а result заполняться)
+ while (fruits.length > 0) {
+   const fromIndex = getRandomInt(fruits.length); // индекс элемента, который надо перенести в конец
+   const item = fruits.splice(fromIndex, 1)[0]; // получаем элемент, который надо перенести и удаляем его из массива
+   result.splice(result.length, 1, item); // добавляем элемент в конец
   }
-
-  fruits = result;
+  if (fruits == result) {
+    alert("Случайности не случайны, но изменений не произошло");
+  } else {
+    fruits = result;
+    samCntrl();
+  }
 };
-
+// Можно и так
+// document.getElementById('.shuffle__btn').addEventListener('click', function () {
 shuffleButton.addEventListener('click', () => {
   shuffleFruits();
-  display();
+    display();
 });
 
 /*** ФИЛЬТРАЦИЯ ***/
@@ -128,7 +169,8 @@ sortActionButton.addEventListener('click', () => {
 /*** ДОБАВИТЬ ФРУКТ ***/
 
 addActionButton.addEventListener('click', () => {
-  // TODO: создание и добавление нового фрукта в массив fruits
+  // TODO: создание и добавление нового фрукта в массив fruits через метод push и, вероятно, преобразование строки в JSON
   // необходимые значения берем из kindInput, colorInput, weightInput
+  // должно получиться что-то вроде fruits.push("kind": "kindInput", "color": "colorInput", "weight": "weightInput")
   display();
 });
