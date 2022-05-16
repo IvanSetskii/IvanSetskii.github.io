@@ -63,15 +63,15 @@ const display = () => {
     if (fruits[i]['color'] == "фиолетовый") {
       li.className += " fruit_violet";
     } else if (fruits[i]['color'] == "зеленый"){
-      li.className = " fruit_green";
+      li.className += " fruit_green";
     } else if (fruits[i]['color'] == "розово-красный"){
-      li.className = " fruit_carmazin";
+      li.className += " fruit_carmazin";
     } else if (fruits[i]['color'] == "желтый"){
-      li.className = " fruit_yellow";
+      li.className += " fruit_yellow";
     } else if (fruits[i]['color'] == "светло-коричневый"){
-      li.className = " fruit_lightbrown";
+      li.className += " fruit_lightbrown";
     } else {
-      li.className = " fruit_black";
+      li.className += " fruit_black";
     }
   }
 };
@@ -172,5 +172,16 @@ addActionButton.addEventListener('click', () => {
   // TODO: создание и добавление нового фрукта в массив fruits через метод push и, вероятно, преобразование строки в JSON
   // необходимые значения берем из kindInput, colorInput, weightInput
   // должно получиться что-то вроде fruits.push("kind": "kindInput", "color": "colorInput", "weight": "weightInput")
+  let kindIn = kindInput.value;
+  let colorIn = colorInput.value;
+  let weightIn = weightInput.value;
+if (kindIn==='' || colorIn==='' || weightIn==='') {
+  alert("Необходимо ввести все данные");
+} else {
+  fruits.push({"kind": kindIn, "color": colorIn, "weight": weightIn});
+  kindInput.value = '';
+  colorInput.value = '';
+  weightInput.value = '';
+  }
   display();
 });
