@@ -176,7 +176,7 @@ addActionButton.addEventListener('click', () => {
   let colorIn = colorInput.value;
   let weightIn = weightInput.value;
 if (kindIn==='' || colorIn==='' || weightIn==='') {
-  alert("Необходимо ввести все данные");
+  alert("Необходимо ввести все данные"); 
 } else {
   fruits.push({"kind": kindIn, "color": colorIn, "weight": weightIn});
   kindInput.value = '';
