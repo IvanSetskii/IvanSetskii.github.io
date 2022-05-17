@@ -118,13 +118,17 @@ shuffleButton.addEventListener('click', () => {
 
 // фильтрация массив
 const filterFruits = () =>  {
-  let weightMinIn = weightMinInput.value; // задаем значения мин из поля
-  let weightMaxIn = weightMaxInput.value; // задаем значение макс из поля
-  if (weightMinIn === '' || weightMaxIn === '') { // сравниваем с null
+    let weightMinIn = weightMinInput.value; // задаем значения мин из поля
+    let weightMaxIn = weightMaxInput.value; // задаем значение макс из поля
+    if (weightMinIn === '' || weightMaxIn === '') { // сравниваем с null
     alert("Необходимо ввести все данные");
+  } else if (weightMinIn - weightMaxIn > 0) { // сравниваем друг с другом
+      console.log(weightMinIn > weightMaxIn);
+      console.log(weightMinIn, weightMaxIn);
+      alert("Попробуйте ввести корректные данные");
   } else {
-    const filterMinFruits = fruits.filter(fruits => fruits.weight > weightMinIn); // фильтруем по минимум
-    const filterMaxFruits = filterMinFruits.filter(filterMinFruits => filterMinFruits.weight < weightMaxIn); // добавляем фильтр по максимум
+    const filterMinFruits = fruits.filter(fruits => fruits.weight >= weightMinIn); // фильтруем по минимум
+    const filterMaxFruits = filterMinFruits.filter(filterMinFruits => filterMinFruits.weight <= weightMaxIn); // добавляем фильтр по максимум
     fruits = filterMaxFruits; // возвращаем в JSON
   }
 }
