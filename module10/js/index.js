@@ -16,8 +16,12 @@ const fruitInfo = document.querySelectorAll('.fruit__info'); // список в 
 let fruitsJSON = `[
   {"kind": "Мангустин", "color": "фиолетовый", "weight": 13},
   {"kind": "Дуриан", "color": "зеленый", "weight": 35},
+  {"kind": "Дуриан", "color": "зеленый", "weight": 5},
   {"kind": "Личи", "color": "розово-красный", "weight": 17},
+  {"kind": "Личи", "color": "розово-красный", "weight": 1},
   {"kind": "Карамбола", "color": "желтый", "weight": 28},
+  {"kind": "Карамбола", "color": "желтый", "weight": 2},
+  {"kind": "Карамбола", "color": "желтый", "weight": 8},
   {"kind": "Тамаринд", "color": "светло-коричневый", "weight": 22}
 ]`;
 
@@ -89,7 +93,6 @@ const getRandomInt = (max) => {
 // перемешивание массива
 const shuffleFruits = () => {
  let result = [];
-  // ATTENTION: сейчас при клике вы запустите бесконечный цикл и браузер зависнет
  while (fruits.length > 0) {
    const fromIndex = getRandomInt(fruits.length); // индекс элемента, который надо перенести в конец
    const item = fruits.splice(fromIndex, 1)[0]; // получаем элемент, который надо перенести и удаляем его из массива
@@ -102,7 +105,7 @@ const shuffleFruits = () => {
     samCntrl();
   }
 };
-// Можно и так
+// Можно и так, но сверху уже есть строка с присвоением shuffleButton
 // document.getElementById('.shuffle__btn').addEventListener('click', function () {
 shuffleButton.addEventListener('click', () => {
   shuffleFruits();
@@ -130,11 +133,38 @@ let sortTime = '-'; // инициализация состояния време�
 
 const comparationColor = (a, b) => {
   // TODO: допишите функцию сравнения двух элементов по цвету
+  console.log(a['color'], b);
+  return  a['color'] == b ? true : false;
 };
 
 const sortAPI = {
   bubbleSort(arr, comparation) {
-    // TODO: допишите функцию сортировки пузырьком
+    const n = arr.length;
+    //новый массив со всеми уникальными цветами
+    let newArr = [];
+    for (let p = 0; p < n; p++) {
+      newArr[p] = arr[p]['color'];
+    }
+    var colorArr = [...new Set(newArr)];
+    let l = colorArr.length;
+    console.log(colorArr);
+    // теперь проходимся через массив с цветами и сравниваем с основным массивом
+    for (let k = 0; k < l; k++) {
+      // внешняя итерация по элементам
+      for (let i = 0; i < n - 1; i++) {
+        // внутренняя итерация для перестановки элемента в конец массива
+        for (let j = 0; j < n - 1; j++) {
+          // сравниваем элементы
+          if (comparation(arr[j], colorArr[k])) {
+            // делаем обмен элементов
+            let temp = arr[j + 1];
+            arr[j + 1] = arr[j];
+            arr[j] = temp;
+          }
+          }
+        }
+      }
+
   },
 
   quickSort(arr, comparation) {
@@ -162,6 +192,7 @@ sortActionButton.addEventListener('click', () => {
   // TODO: вывести в sortTimeLabel значение 'sorting...'
   const sort = sortAPI[sortKind];
   sortAPI.startSort(sort, fruits, comparationColor);
+
   display();
   // TODO: вывести в sortTimeLabel значение sortTime
 });
@@ -176,9 +207,10 @@ addActionButton.addEventListener('click', () => {
   let colorIn = colorInput.value;
   let weightIn = weightInput.value;
 if (kindIn==='' || colorIn==='' || weightIn==='') {
-  alert("Необходимо ввести все данные"); 
+  alert("Необходимо ввести все данные");
 } else {
   fruits.push({"kind": kindIn, "color": colorIn, "weight": weightIn});
+  // не забываем подчистить поле ввода
   kindInput.value = '';
   colorInput.value = '';
   weightInput.value = '';
