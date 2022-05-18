@@ -175,7 +175,7 @@ const sortAPI = {
             console.log(arr[j], colorArr[k]);
             console.log(arr[j], colorArr[k]);
             console.log(arr[j], colorArr[k]);
-            /***            внимание, консольлог выше нагружает сортировку пузырьками          ***/
+            /***            внимание, консольлог выше нагружает по времени сортировку пузырьками          ***/
             // делаем обмен элементов
             [arr[j+1], arr[j]] = [arr[j], arr[j+1]];
           }
@@ -183,30 +183,32 @@ const sortAPI = {
       }
     }
   },
-
+// quicksort :
   quickSort(arr, comparation) {
-
-// функция обмена элементов
-    function swap(items, firstIndex, secondIndex){
-      const temp = items[firstIndex];
-      items[firstIndex] = items[secondIndex];
-      items[secondIndex] = temp;
+// везде примеры только с цифрами (больше/меньше) как переложить на цвета? С чем сравнивать?
+/***
+    // функция обмена элементов
+    function swap(fruits, firstIndex, secondIndex){
+      const temp = fruits[firstIndex];
+      fruits[firstIndex] = fruits[secondIndex];
+      fruits[secondIndex] = temp;
     }
 
 // функция разделитель
-    function partition(items, left, right) {
-      var pivot = items[Math.floor((right + left) / 2)],
+    function partition(fruits, left, right) {
+      var pivot = fruits[Math.floor((right + left) / 2)],
           i = left,
           j = right;
       while (i <= j) {
-        while (items[i] < pivot) {
+        while (fruits[i][color] != pivot['color']) {
+          console.log(fruits[i][color], pivot['color']);
           i++;
         }
-        while (items[j] > pivot) {
+        while (fruits[j] == pivot) {
           j--;
         }
         if (i <= j) {
-          swap(items, i, j);
+          swap(fruits, i, j);
           i++;
           j--;
         }
@@ -215,32 +217,24 @@ const sortAPI = {
     }
 
 // алгоритм быстрой сортировки
-    const n = arr.length;
-    //новый массив со всеми уникальными цветами
-    let newArr = [];
-    for (let p = 0; p < n; p++) {
-      newArr[p] = fruits[p]['color'];
-    }
-    var colorArr = [...new Set(newArr)];
-    let l = colorArr.length;
-    // теперь проходимся через массив с цветами и сравниваем с основным массивом
-    for (let k = 0; k < l; k++) {
-      function quickSortChild(items, left, right) {
-        var index;
-        if (items.length == colorArr[k]) {
-          left = typeof left != "number" ? 0 : left;
-          right = typeof right != "number" ? items.length - 1 : right;
-          index = partition(items, left, right);
-          if (left < index - 1) {
-            quickSortChild(items, left, index - 1);
-          }
-          if (index < right) {
-            quickSortChild(items, index, right);
-          }
+    function quickSort(fruits, left, right) {
+      var index;
+      if (fruits.length > 1) {
+   //     left = typeof left != "number" ? 0 : left;
+   //     right = typeof right != "number" ? fruits.length - 1 : right;
+        index = partition(fruits, left, right);
+        console.log(index);
+        if (left < index - 1) {
+          quickSort(fruits, left, index - 1);
         }
-        return items;
+        if (index < right) {
+          quickSort(fruits, index, right);
+        }
       }
+      return fruits;
+      display();
     }
+ ***/
   },
 
   // выполняет сортировку и производит замер времени
@@ -271,12 +265,9 @@ sortChangeButton.addEventListener('click', () => {
 });
 
 sortActionButton.addEventListener('click', () => {
-  // TODO: вывести в sortTimeLabel значение 'sorting...'
   const sort = sortAPI[sortKind];
   sortAPI.startSort(sort, fruits, comparationColor);
   display();
-  // TODO: вывести в sortTimeLabel значение sortTime
-
 });
 
 /*** ДОБАВИТЬ ФРУКТ ***/
