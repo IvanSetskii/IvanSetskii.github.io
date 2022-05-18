@@ -122,10 +122,12 @@ const filterFruits = () =>  {
     let weightMaxIn = weightMaxInput.value; // задаем значение макс из поля
     if (weightMinIn === '' || weightMaxIn === '') { // сравниваем с null
     alert("Необходимо ввести все данные");
-  } else if (weightMinIn - weightMaxIn > 0) { // сравниваем друг с другом
+  } else if (weightMinIn < 0 || weightMaxIn < 0) {
+      alert("Вес не может быть отрицательным");
+    } else if (weightMinIn - weightMaxIn > 0) { // сравниваем друг с другом
       console.log(weightMinIn > weightMaxIn);
       console.log(weightMinIn, weightMaxIn);
-      alert("Попробуйте ввести корректные данные");
+      alert("Попробуйте ввести корректные данные минимального и максимального веса");
   } else {
     const filterMinFruits = fruits.filter(fruits => fruits.weight >= weightMinIn); // фильтруем по минимум
     const filterMaxFruits = filterMinFruits.filter(filterMinFruits => filterMinFruits.weight <= weightMaxIn); // добавляем фильтр по максимум
@@ -285,12 +287,14 @@ addActionButton.addEventListener('click', () => {
   let weightIn = weightInput.value;
 if (kindIn==='' || colorIn==='' || weightIn==='') {
   alert("Необходимо ввести все данные");
-} else {
+} else if ( weightIn <= 0) {
+  alert("Вес не может быть отрицательным");
+  } else {
   fruits.push({"kind": kindIn, "color": colorIn, "weight": weightIn});
   // чистим поле ввода
   kindInput.value = '';
   colorInput.value = '';
   weightInput.value = '';
-  }
+}
   display();
 });
