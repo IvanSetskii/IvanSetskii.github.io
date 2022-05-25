@@ -9,5 +9,4 @@
     <a href="index.php">Главная</a> |
     <a href="about.php">0 нас</a> |
     <a href="contact.php">Контакты</a>
-    
 </header>
