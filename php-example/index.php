@@ -1,11 +1,9 @@
 <?php
-  $title = "Главная";
-   require "blocks/header.php";
+    $title = "Главная";
+    require "blocks/header.php";
+    require "main.php"; ?>
+</div> <!--- закрытие тега из хедера для подсчета высоты страницы и корректного расположения футера (всегда внизу)--->
+<?php
+    require "blocks/footer.php";
 ?>
-<h1>Главная страница </h1>
-<?php 
-	echo date('d-M-Y', strtotime("now"));
 
-
-	require "blocks/footer.php";
-?>

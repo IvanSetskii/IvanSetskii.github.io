@@ -1,0 +1,34 @@
+.content {
+    min-height: calc(100vh - 70px);
+}
+.footer {
+    height: 60px;
+}
+.lorem {
+    color: green;
+}
+
+.sendcontact {
+    margin-bottom: 4%
+}
+
+.sendcontact input[type="text"], textarea {
+    border: solid 1px #c3c3c3;
+    margin-bottom: 2%;
+}
+
+.sendcontact input[type="text"] {
+    width: 500px;
+}
+
+.sendcontact textarea {
+    width: 515px;
+    height: 200px;
+}
+
+.sendcontact input[type="submit"] {
+    background-color: #7268ad;
+    padding: 1%;
+    color: white;
+    border-radius: 5px;
+}
