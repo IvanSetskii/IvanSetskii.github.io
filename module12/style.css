@@ -1,0 +1,22 @@
+html,
+body {
+    height: 90%;
+}
+
+p {
+    color: black;
+    padding-left: 10px;
+    margin: 0;
+}
+
+h4 {
+    color: black;
+    text-align: left;
+    padding-left: 10px;
+    margin-bottom: 10px;
+}
+
+form{
+    color: blue;
+    padding-left: 10px;
+}
